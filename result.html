@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watermark Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Watermark Result</h1>
+    <div class="result-image">
+        <img src="data:image/png;base64,{{ image }}" alt="Watermarked Image">
+    </div>
+    <a href="{{ url_for('watermark') }}" class="download-btn">Download Watermarked Image</a>
+</body>
+</html>

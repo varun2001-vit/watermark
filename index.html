@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watermark App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Watermark App</h1>
+    <form action="{{ url_for('watermark') }}" method="POST">
+        <div class="form-group">
+            <label for="image_url">Image URL:</label>
+            <input type="text" id="image_url" name="image_url" placeholder="Enter image URL" required>
+        </div>
+        <div class="form-group">
+            <label for="watermark_type">Watermark Type:</label>
+            <select id="watermark_type" name="watermark_type">
+                <option value="image">Image</option>
+                <option value="text">Text</option>
+            </select>
+        </div>
+        <div class="form-group" id="watermark_url_group">
+            <label for="watermark_url">Watermark URL:</label>
+            <input type="text" id="watermark_url" name="watermark_url" placeholder="Enter watermark URL" required>
+        </div>
+        <div class="form-group" id="watermark_text_group">
+            <label for="watermark_text">Watermark Text:</label>
+            <input type="text" id="watermark_text" name="watermark_text" placeholder="Enter watermark text" required>
+        </div>
+        <input type="submit" value="Add Watermark">
+    </form>
+    <script>
+        document.getElementById('watermark_type').addEventListener('change', function() {
+            var watermarkType = this.value;
+            var watermarkUrlGroup = document.getElementById('watermark_url_group');
+            var watermarkTextGroup = document.getElementById('watermark_text_group');
+
+            if (watermarkType === 'image') {
+                watermarkUrlGroup.style.display = 'block';
+                watermarkTextGroup.style.display = 'none';
+            } else if (watermarkType === 'text') {
+                watermarkUrlGroup.style.display = 'none';
+                watermarkTextGroup.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
